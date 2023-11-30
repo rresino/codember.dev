@@ -7,6 +7,7 @@ It's my solutions for challenges for [Codember.dev](https://codember.dev/)
 ### Challeges 
 
 - Kotlin - [Challenge1](./kotlin/src/main/kotlin/rresino/codember/task2023/Challenge01.kt)
+- Kotlin - [Challenge2](./kotlin/src/main/kotlin/rresino/codember/task2023/Challenge02.kt)
 
 
 ### Secrets
