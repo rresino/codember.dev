@@ -1,16 +1,13 @@
 package rresino.codember.task2023
 
+import rresino.codember.util.ChallengeTask
 import rresino.codember.util.FileUtils
-import kotlin.time.Duration
-import kotlin.time.measureTime
 
-object Challenge01 {
+object Challenge01 : ChallengeTask<String> {
 
-    fun run(filePath: String): Pair<Duration, String> {
+    override fun run(filePath: String): String {
 
-        var rs = ""
-        val time = measureTime {
-            rs = FileUtils
+        return FileUtils
                 .readInput(filePath, cleanUp = true)
                 .joinToString { it }
                 .lowercase()
@@ -20,14 +17,12 @@ object Challenge01 {
                 .toList()
                 .map { "${it.first}${it.second}" }
                 .joinToString(separator = "") { it }
-        }
-        return Pair(time, rs)
     }
 
     @JvmStatic
     fun main(args: Array<String>) {
         println("Challenge 01:")
-        val rs = run("message_01.txt")
+        val rs = Challenge01.runWithTime("message_01.txt")
         println("Solution (${rs.first.inWholeMilliseconds}):")
         println(rs.second)
     }

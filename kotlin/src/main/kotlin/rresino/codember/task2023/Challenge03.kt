@@ -1,10 +1,9 @@
 package rresino.codember.task2023
 
+import rresino.codember.util.ChallengeTask
 import rresino.codember.util.FileUtils
-import kotlin.time.Duration
-import kotlin.time.measureTime
 
-object Challenge03 {
+object Challenge03 : ChallengeTask<String> {
 
     data class PasswordPolicy(val minimumOccurrences: Int, val maxOccurrences: Int, val letter: Char) {
 
@@ -59,20 +58,17 @@ object Challenge03 {
         }
     }
 
-    fun run(filePath: String): Pair<Duration, String> {
-
-        var rs = ""
-        val time = measureTime {
+    override fun run(filePath: String): String {
+        return let {
             val lines = FileUtils.readInput(filePath, cleanUp = true)
-            rs = PasswordPolicyChecker(42, lines).run()?.value?:""
+            PasswordPolicyChecker(42, lines).run()?.value?:""
         }
-        return Pair(time, rs)
     }
 
     @JvmStatic
     fun main(args: Array<String>) {
         println("Challenge 03:")
-        val rs = run("message_03.txt")
+        val rs = runWithTime("message_03.txt")
         println("Solution (${rs.first.inWholeMilliseconds}):")
         println(rs.second)
     }

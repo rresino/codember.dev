@@ -1,10 +1,9 @@
 package rresino.codember.task2023
 
+import rresino.codember.util.ChallengeTask
 import rresino.codember.util.FileUtils
-import kotlin.time.Duration
-import kotlin.time.measureTime
 
-object Challenge02 {
+object Challenge02 : ChallengeTask<String> {
 
     data class InterpreterStatus(val value: Int = 0, val outputLog: String = "") {
 
@@ -18,15 +17,11 @@ object Challenge02 {
 
     }
 
-    fun run(filePath: String): Pair<Duration, String> {
+    override fun run(filePath: String): String {
 
-        var rs = ""
-        val time = measureTime {
-            FileUtils.readInput(filePath, cleanUp = true)
+        return FileUtils.readInput(filePath, cleanUp = true)
                 .joinToString { it }
-                .let { rs = execute(it) }
-        }
-        return Pair(time, rs)
+                .let { execute(it) }
     }
 
     fun execute(inputStr: String): String {
@@ -45,7 +40,7 @@ object Challenge02 {
     @JvmStatic
     fun main(args: Array<String>) {
         println("Challenge 02:")
-        val rs = run("message_02.txt")
+        val rs = runWithTime("message_02.txt")
         println("Solution (${rs.first.inWholeMilliseconds}):")
         println(rs.second)
     }
