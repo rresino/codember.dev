@@ -94,3 +94,8 @@ It's my solutions for challenges for [Codember.dev](https://codember.dev/)
    cowsay
    ping midu.dev
    ```
+   
+13. Teris
+   ```bash
+   play tetris
+   ```
